@@ -5,6 +5,8 @@ import java.util.Objects;
 public class Length {
     private final double value;
     private final Unit unit;
+    private static final int CONVERSION_RATE_METER_TO_CENTIMETER = 100;
+    private static final int CONVERSION_RATE_KILOMETER_TO_CENTIMETER = 100_000;
 
     public Length(double value, Unit unit) {
         this.value = value;
@@ -25,14 +27,22 @@ public class Length {
         double thisValue = this.value;
         double otherValue = otherLength.value;
     
-        if(!this.unit.equals(Unit.CENTIMETER)) {
-            thisValue *= 100;
+        if(this.unit.equals(Unit.METER)) {
+            thisValue *= Length.CONVERSION_RATE_METER_TO_CENTIMETER;
         }
 
-        if(!otherLength.unit.equals(Unit.CENTIMETER)) {
-            otherValue *= 100;
+        if(this.unit.equals(Unit.KILOMETER)) {
+            thisValue *= Length.CONVERSION_RATE_KILOMETER_TO_CENTIMETER;
         }
 
+        if(otherLength.unit.equals(Unit.METER)) {
+            otherValue *= Length.CONVERSION_RATE_METER_TO_CENTIMETER;
+        }
+
+        if(otherLength.unit.equals(Unit.KILOMETER)) {
+            otherValue *= Length.CONVERSION_RATE_KILOMETER_TO_CENTIMETER;
+        }
+        
         return thisValue == otherValue;
     }
 

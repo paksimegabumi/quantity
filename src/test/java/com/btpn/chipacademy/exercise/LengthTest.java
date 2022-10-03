@@ -34,4 +34,12 @@ class LengthTest {
     void equalsContract() {
         EqualsVerifier.forClass(Length.class);
     }
+
+    @Test
+    void equals_shouldReturnTrue_when1KilometersEqualsTo1000Meters() {
+        Length oneThousandMeters = new Length(1000, Unit.METER);
+        Length oneKilometer = new Length(1, Unit.KILOMETER);
+
+        Assertions.assertEquals(oneKilometer, oneThousandMeters);
+    }
 }

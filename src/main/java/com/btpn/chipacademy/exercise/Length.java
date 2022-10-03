@@ -2,9 +2,9 @@ package com.btpn.chipacademy.exercise;
 
 public class Length {
     private final double value;
-    private final String unit;
+    private final Unit unit;
 
-    public Length(double value, String unit) {
+    public Length(double value, Unit unit) {
         this.value = value;
         this.unit = unit;
     }
@@ -20,8 +20,17 @@ public class Length {
         }
 
         Length otherLength = (Length) object;
-        double convertedValue = this.value / 100;
+        double thisValue = this.value;
+        double otherValue = otherLength.value;
+    
+        if(!this.unit.equals(Unit.CENTIMETER)) {
+            thisValue *= 100;
+        }
 
-        return convertedValue == otherLength.value;
+        if(!otherLength.unit.equals(Unit.CENTIMETER)) {
+            otherValue *= 100;
+        }
+
+        return thisValue == otherValue;
     }
 }

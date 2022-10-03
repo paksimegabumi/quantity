@@ -1,5 +1,7 @@
 package com.btpn.chipacademy.exercise;
 
+import java.util.Objects;
+
 public class Length {
     private final double value;
     private final Unit unit;
@@ -32,5 +34,10 @@ public class Length {
         }
 
         return thisValue == otherValue;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.value, this.unit);
     }
 }

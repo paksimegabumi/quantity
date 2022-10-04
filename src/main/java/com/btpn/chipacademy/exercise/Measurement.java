@@ -2,13 +2,14 @@ package com.btpn.chipacademy.exercise;
 
 import java.util.Objects;
 
-public class Length {
+public class Measurement {
     private final double value;
     private final Unit unit;
     private static final int CONVERSION_RATE_METER_TO_CENTIMETER = 100;
     private static final int CONVERSION_RATE_KILOMETER_TO_CENTIMETER = 100_000;
+    private static final int CONVERSION_RATE_KILOGRAM_TO_GRAM = 1000;
 
-    public Length(double value, Unit unit) {
+    public Measurement(double value, Unit unit) {
         this.value = value;
         this.unit = unit;
     }
@@ -19,28 +20,36 @@ public class Length {
             return true;
         }
 
-        if(!(object instanceof Length)) {
+        if(!(object instanceof Measurement)) {
             return false;
         }
 
-        Length otherLength = (Length) object;
+        Measurement otherLength = (Measurement) object;
         double thisValue = this.value;
         double otherValue = otherLength.value;
     
         if(this.unit.equals(Unit.METER)) {
-            thisValue *= Length.CONVERSION_RATE_METER_TO_CENTIMETER;
+            thisValue *= Measurement.CONVERSION_RATE_METER_TO_CENTIMETER;
         }
 
         if(this.unit.equals(Unit.KILOMETER)) {
-            thisValue *= Length.CONVERSION_RATE_KILOMETER_TO_CENTIMETER;
+            thisValue *= Measurement.CONVERSION_RATE_KILOMETER_TO_CENTIMETER;
+        }
+
+        if(this.unit.equals(Unit.KILOGRAM)) {
+            thisValue *= Measurement.CONVERSION_RATE_KILOGRAM_TO_GRAM;
         }
 
         if(otherLength.unit.equals(Unit.METER)) {
-            otherValue *= Length.CONVERSION_RATE_METER_TO_CENTIMETER;
+            otherValue *= Measurement.CONVERSION_RATE_METER_TO_CENTIMETER;
         }
 
         if(otherLength.unit.equals(Unit.KILOMETER)) {
-            otherValue *= Length.CONVERSION_RATE_KILOMETER_TO_CENTIMETER;
+            otherValue *= Measurement.CONVERSION_RATE_KILOMETER_TO_CENTIMETER;
+        }
+
+        if(otherLength.unit.equals(Unit.KILOGRAM)) {
+            otherValue *= Measurement.CONVERSION_RATE_KILOGRAM_TO_GRAM;
         }
         
         return Double.compare(thisValue, otherValue) == 0;

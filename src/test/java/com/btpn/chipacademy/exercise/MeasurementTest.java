@@ -38,9 +38,9 @@ class MeasurementTest {
 
     @Test
     void equals_shouldReturnTrue_when100GramsEqualsTo1Kilogram() {
-        Measurement oneThousandgrams = new Measurement(1000, Unit.GRAMS);
+        Measurement oneThousandGrams = new Measurement(1000, Unit.GRAMS);
         Measurement oneKilograms = new Measurement(1, Unit.KILOGRAM);
 
-        Assertions.assertEquals(oneThousandgrams, oneKilograms);
+        Assertions.assertEquals(oneThousandGrams, oneKilograms);
     }
 }

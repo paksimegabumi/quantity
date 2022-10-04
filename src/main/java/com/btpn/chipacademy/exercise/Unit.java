@@ -16,10 +16,13 @@ public enum Unit {
     }
 
     public double toStandardInternationalValue(Measurement measurement) {
+        if(!isSameUnitType(measurement.getUnit())){
+            throw new DifferentUnitTypeException();
+        }
         return measurement.getValue() * this.conversionRateToStandardInternational;
     }
 
-    public boolean isSameUnitType(Unit otherUnit){
+    private boolean isSameUnitType(Unit otherUnit){
         return this.unitType.equals(otherUnit.unitType);
     }
 }

@@ -22,9 +22,6 @@ public class Measurement {
         }
 
         Measurement otherMeasurement = (Measurement) object;
-        if(!this.unit.isSameUnitType(unit)){
-            return false;
-        }
         double thisValue = this.unit.toStandardInternationalValue(this);
         double otherValue = otherMeasurement.unit.toStandardInternationalValue(otherMeasurement);
         
@@ -38,5 +35,9 @@ public class Measurement {
 
     public double getValue() {
         return this.value;
+    }
+
+    public Unit getUnit() {
+        return this.unit;
     }
 }

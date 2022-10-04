@@ -15,11 +15,9 @@ class UnitTest {
     }
 
     @Test
-    void isSameUnitType_shouldReturnFalse_whenCentimeterComparedWithGram() {
-        boolean expectedResult = false;
+    void toStandardInternationalValue_shouldReturnDifferentTypeException_whenUnitIsCentimeterAndConvertedToGram() {
+        Measurement oneHundredCentiMeters = new Measurement(100, Unit.CENTIMETER);
 
-        boolean actualResult = Unit.CENTIMETER.isSameUnitType(Unit.GRAMS);
-
-        Assertions.assertEquals(expectedResult, actualResult);
+        Assertions.assertThrows(DifferentUnitTypeException.class, () -> Unit.GRAMS.toStandardInternationalValue(oneHundredCentiMeters));
     }
 }

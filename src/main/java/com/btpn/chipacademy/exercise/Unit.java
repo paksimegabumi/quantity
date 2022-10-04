@@ -8,18 +8,18 @@ public enum Unit {
     KILOGRAM(UnitType.MASS, 1000);
 
     private UnitType unitType;
-    private double conversionRateToMeter;
+    private double conversionRateToStandardInternational;
     
-    private Unit( UnitType unitType, double conversionRateToMeter) {
+    private Unit( UnitType unitType, double conversionRateToStandardInternational) {
         this.unitType = unitType;
-        this.conversionRateToMeter = conversionRateToMeter;
+        this.conversionRateToStandardInternational = conversionRateToStandardInternational;
     }
 
-    public UnitType getUniType() {
-        return this.unitType;
+    public double toStandardInternationalValue(Measurement measurement) {
+        return measurement.getValue() * this.conversionRateToStandardInternational;
     }
 
-    public double toMeter(double value) {
-        return value * this.conversionRateToMeter;
+    public boolean isSameUnitType(Unit otherUnit){
+        return this.unitType.equals(otherUnit.unitType);
     }
 }

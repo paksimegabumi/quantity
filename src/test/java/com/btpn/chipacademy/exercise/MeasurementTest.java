@@ -43,4 +43,12 @@ class MeasurementTest {
 
         Assertions.assertEquals(oneThousandGrams, oneKilograms);
     }
+
+    @Test
+    void equals_shouldReturnFalse_when1GramEqualsTo1Meter() {
+        Measurement oneGram = new Measurement(1000, Unit.GRAMS);
+        Measurement oneMeter = new Measurement(1, Unit.METER);
+
+        Assertions.assertNotEquals(oneGram, oneMeter);
+    }
 }

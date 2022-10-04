@@ -21,9 +21,12 @@ public class Measurement {
             return false;
         }
 
-        Measurement otherLength = (Measurement) object;
-        double thisValue = this.unit.toMeter(this.value);
-        double otherValue = otherLength.unit.toMeter(otherLength.value);
+        Measurement otherMeasurement = (Measurement) object;
+        if(!this.unit.isSameUnitType(unit)){
+            return false;
+        }
+        double thisValue = this.unit.toStandardInternationalValue(this);
+        double otherValue = otherMeasurement.unit.toStandardInternationalValue(otherMeasurement);
         
         return Double.compare(thisValue, otherValue) == 0;
     }
@@ -31,5 +34,9 @@ public class Measurement {
     @Override
     public int hashCode() {
         return Objects.hash(this.value, this.unit);
+    }
+
+    public double getValue() {
+        return this.value;
     }
 }

@@ -43,7 +43,7 @@ public class Length {
             otherValue *= Length.CONVERSION_RATE_KILOMETER_TO_CENTIMETER;
         }
         
-        return thisValue == otherValue;
+        return Double.compare(thisValue, otherValue) == 0;
     }
 
     @Override

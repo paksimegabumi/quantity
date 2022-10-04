@@ -3,8 +3,6 @@ package com.btpn.chipacademy.exercise;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import nl.jqno.equalsverifier.EqualsVerifier;
-
 class LengthTest {
     @Test
     void equals_shouldReturnTrue_when100CentimetersEqualsTo1Meter() {
@@ -28,11 +26,6 @@ class LengthTest {
         Length twoMeter = new Length(2, Unit.METER);
 
         Assertions.assertEquals(twoMeter, twoHundredCentimeter);
-    }
-
-    @Test
-    void equalsContract() {
-        EqualsVerifier.forClass(Length.class);
     }
 
     @Test

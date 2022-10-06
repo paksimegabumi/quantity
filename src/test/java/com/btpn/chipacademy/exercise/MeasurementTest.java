@@ -46,9 +46,20 @@ class MeasurementTest {
 
     @Test
     void equals_shouldReturnFalse_when1GramEqualsTo1Meter() {
-        Measurement oneGram = new Measurement(1000, Unit.GRAMS);
+        Measurement oneThousandGram = new Measurement(1000, Unit.GRAMS);
         Measurement oneMeter = new Measurement(1, Unit.METER);
 
-        Assertions.assertNotEquals(oneGram, oneMeter);
+        Assertions.assertNotEquals(oneThousandGram, oneMeter);
+    }
+
+    @Test
+    void add_shouldReturn2M_whenGivenValue100CentimeterAnd1Meter() {
+        Measurement expectedResult = new Measurement(2, Unit.METER);
+        Measurement oneHundredCentimeter = new Measurement(100, Unit.CENTIMETER);
+        Measurement oneMeter = new Measurement(1, Unit.METER);
+
+        Measurement actualResult = oneHundredCentimeter.add(oneMeter);
+
+        Assertions.assertEquals(actualResult, expectedResult);
     }
 }

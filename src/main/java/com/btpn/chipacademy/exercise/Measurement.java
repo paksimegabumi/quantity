@@ -46,4 +46,10 @@ public class Measurement {
     public Unit getUnit() {
         return this.unit;
     }
+
+    public Measurement add(Measurement otherMeasurement) {
+        double convertedOtherMeasurementValue = this.getUnit().valueOf(otherMeasurement);
+        double result = this.value + convertedOtherMeasurementValue;
+        return new Measurement(result, this.unit);
+    }
 }

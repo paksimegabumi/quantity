@@ -23,10 +23,10 @@ public enum Unit {
         if(!isSameUnitType(measurement.getUnit())){
             throw new DifferentUnitTypeException();
         }
-        return measurement.getValue() * this.conversionRateToStandardInternational;
+        return this.valueOf(measurement);
     }
 
-    public double valueOf(Measurement otherMeasurement) {
+    private double valueOf(Measurement otherMeasurement) {
         double conversionValue = otherMeasurement.getUnit().conversionRateToStandardInternational / this.conversionRateToStandardInternational;
         return otherMeasurement.getValue() * conversionValue;
     }

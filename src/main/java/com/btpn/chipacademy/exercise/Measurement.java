@@ -48,7 +48,7 @@ public class Measurement {
     }
 
     public Measurement add(Measurement otherMeasurement) {
-        double convertedOtherMeasurementValue = this.getUnit().valueOf(otherMeasurement);
+        double convertedOtherMeasurementValue = this.getUnit().toStandardInternationalValue(otherMeasurement);
         double result = this.value + convertedOtherMeasurementValue;
         return new Measurement(result, this.unit);
     }

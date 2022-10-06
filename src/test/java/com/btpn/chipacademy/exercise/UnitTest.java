@@ -20,14 +20,4 @@ class UnitTest {
 
         Assertions.assertThrows(DifferentUnitTypeException.class, () -> Unit.GRAMS.toStandardInternationalValue(oneHundredCentiMeters));
     }
-
-    @Test
-    void valueOf_shouldReturn1_whenValueIs100() {
-        double expectedConvertedValue = 1;
-        Measurement oneHundredCentiMeters = new Measurement(100, Unit.CENTIMETER);
-
-        double actualConvertedValue = Unit.METER.valueOf(oneHundredCentiMeters);
-
-        Assertions.assertEquals(expectedConvertedValue, actualConvertedValue);
-    }
 }

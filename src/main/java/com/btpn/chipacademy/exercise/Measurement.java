@@ -26,7 +26,7 @@ public class Measurement {
         double otherValue = otherMeasurement.value;
         try {
             thisValue = this.unit.toStandardInternationalValue(this);
-            otherValue = otherMeasurement.unit.toStandardInternationalValue(otherMeasurement);
+            otherValue = this.unit.toStandardInternationalValue(otherMeasurement);
         } catch (DifferentUnitTypeException e) {
             return false;
         }

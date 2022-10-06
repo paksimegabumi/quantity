@@ -53,13 +53,21 @@ class MeasurementTest {
     }
 
     @Test
-    void add_shouldReturn2M_whenGivenValue100CentimeterAnd1Meter() {
+    void add_shouldReturn2M_whenGivenValue1MeterAnd100Centimeter() {
         Measurement expectedResult = new Measurement(2, Unit.METER);
         Measurement oneHundredCentimeter = new Measurement(100, Unit.CENTIMETER);
         Measurement oneMeter = new Measurement(1, Unit.METER);
 
-        Measurement actualResult = oneHundredCentimeter.add(oneMeter);
+        Measurement actualResult = oneMeter.add(oneHundredCentimeter);
 
         Assertions.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    void equals_shouldReturnTrue_when1GramEqualsTo1Meter() {
+        Measurement oneHundredCelcius = new Measurement(100, Unit.CELCIUS);
+        Measurement twoHundredAndTwelveFarenheit = new Measurement(1, Unit.FARENHEIT);
+
+        Assertions.assertNotEquals(oneHundredCelcius, twoHundredAndTwelveFarenheit);
     }
 }

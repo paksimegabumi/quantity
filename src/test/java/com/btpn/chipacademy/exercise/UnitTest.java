@@ -20,4 +20,15 @@ class UnitTest {
 
         Assertions.assertThrows(DifferentUnitTypeException.class, () -> Unit.GRAMS.toStandardInternationalValue(oneHundredCentiMeters));
     }
+
+    @Test
+    void toStandardInternationalValue_shouldReturn10_whenUnitIsFarenheit() {
+        double expectedConvertedValue = 10;
+        Measurement fiftyFarenheit = new Measurement(50, Unit.FARENHEIT);
+
+        double actualConvertedValue = Unit.CELCIUS.toStandardInternationalValue(fiftyFarenheit);
+
+        Assertions.assertEquals(expectedConvertedValue, actualConvertedValue);
+    }
+
 }

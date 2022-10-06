@@ -22,8 +22,14 @@ public class Measurement {
         }
 
         Measurement otherMeasurement = (Measurement) object;
-        double thisValue = this.unit.toStandardInternationalValue(this);
-        double otherValue = otherMeasurement.unit.toStandardInternationalValue(otherMeasurement);
+        double thisValue = this.value;
+        double otherValue = otherMeasurement.value;
+        try {
+            thisValue = this.unit.toStandardInternationalValue(this);
+            otherValue = otherMeasurement.unit.toStandardInternationalValue(otherMeasurement);
+        } catch (DifferentUnitTypeException e) {
+            return false;
+        }
         
         return Double.compare(thisValue, otherValue) == 0;
     }

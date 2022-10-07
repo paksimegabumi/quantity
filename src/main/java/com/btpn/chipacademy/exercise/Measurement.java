@@ -3,12 +3,24 @@ package com.btpn.chipacademy.exercise;
 import java.util.Objects;
 
 public class Measurement {
-    private final double value;
-    private final Unit unit;
+    protected final double value;
+    protected final Metric metric;
 
-    public Measurement(double value, Unit unit) {
+    public Measurement(double value, Metric metric) {
         this.value = value;
-        this.unit = unit;
+        this.metric = metric;
+    }
+
+    static Measurement createCelsius(double value) {
+        return new Measurement(value, Metric.CELSIUS);
+    }
+
+    static Measurement createFahrenheit(double value) {
+        return new Measurement(value, Metric.FAHRENHEIT);
+    }
+
+    static Measurement createKelvin(double value) {
+        return new Measurement(value, Metric.KELVIN);
     }
 
     @Override
@@ -25,9 +37,9 @@ public class Measurement {
         double thisValue = this.value;
         double otherValue = otherMeasurement.value;
         try {
-            thisValue = this.unit.toStandardInternationalValue(this);
-            otherValue = this.unit.toStandardInternationalValue(otherMeasurement);
-        } catch (DifferentUnitTypeException e) {
+            thisValue = this.metric.toStandardInternationalValue(this);
+            otherValue = this.metric.toStandardInternationalValue(otherMeasurement);
+        } catch (DifferentMetricTypeException e) {
             return false;
         }
         
@@ -36,20 +48,6 @@ public class Measurement {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.value, this.unit);
-    }
-
-    public double getValue() {
-        return this.value;
-    }
-
-    public Unit getUnit() {
-        return this.unit;
-    }
-
-    public Measurement add(Measurement otherMeasurement) {
-        double convertedOtherMeasurementValue = this.getUnit().toStandardInternationalValue(otherMeasurement);
-        double result = this.value + convertedOtherMeasurementValue;
-        return new Measurement(result, this.unit);
+        return Objects.hash(this.value, this.metric);
     }
 }

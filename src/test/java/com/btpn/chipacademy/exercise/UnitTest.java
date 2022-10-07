@@ -22,11 +22,11 @@ class UnitTest {
     }
 
     @Test
-    void toStandardInternationalValue_shouldReturn10_whenUnitIsFarenheit() {
+    void toStandardInternationalValue_shouldReturn10_whenUnitIsFahrenheit() {
         double expectedConvertedValue = 10;
-        Measurement fiftyFarenheit = new Measurement(50, Unit.FARENHEIT);
+        Measurement fiftyFahrenheit = new Measurement(50, Unit.FAHRENHEIT);
 
-        double actualConvertedValue = Unit.CELCIUS.toStandardInternationalValue(fiftyFarenheit);
+        double actualConvertedValue = Unit.CELSIUS.toStandardInternationalValue(fiftyFahrenheit);
 
         Assertions.assertEquals(expectedConvertedValue, actualConvertedValue);
     }

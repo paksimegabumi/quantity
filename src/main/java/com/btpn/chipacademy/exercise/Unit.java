@@ -6,8 +6,10 @@ public enum Unit {
     KILOMETER(UnitType.LENGTH, 1000), 
     GRAMS(UnitType.MASS, 1), 
     KILOGRAM(UnitType.MASS, 1000),
-    CELCIUS(UnitType.TEMPERATURE, 0,5),
-    FARENHEIT(UnitType.TEMPERATURE,32, 9);
+    CELSIUS(UnitType.TEMPERATURE, 0,5),
+    FAHRENHEIT(UnitType.TEMPERATURE,32, 9),
+    KELVIN(UnitType.TEMPERATURE,273.15, 5);
+    
 
     private UnitType unitType;
     private double conversionRateToStandardInternational;
@@ -31,7 +33,7 @@ public enum Unit {
 
     public double toStandardInternationalValue(Measurement measurement) {
         if(this.unitType.equals(UnitType.TEMPERATURE)){
-            return Unit.CELCIUS.convertTemperatureValueOf(measurement);
+            return Unit.CELSIUS.convertTemperatureValueOf(measurement);
         }
         if(this.unitType.equals(UnitType.LENGTH)){
             return Unit.METER.convertValueOf(measurement);

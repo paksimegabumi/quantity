@@ -64,10 +64,18 @@ class MeasurementTest {
     }
 
     @Test
-    void equals_shouldReturnTrue_when1GramEqualsTo1Meter() {
-        Measurement oneHundredCelcius = new Measurement(100, Unit.CELCIUS);
-        Measurement twoHundredAndTwelveFarenheit = new Measurement(1, Unit.FARENHEIT);
+    void equals_shouldReturnTrue_when100CelsiusEquals212Fahrenheit() {
+        Measurement oneHundredCelsius = new Measurement(100, Unit.CELSIUS);
+        Measurement twoHundredAndTwelveFahrenheit = new Measurement(212, Unit.FAHRENHEIT);
 
-        Assertions.assertNotEquals(oneHundredCelcius, twoHundredAndTwelveFarenheit);
+        Assertions.assertEquals(oneHundredCelsius, twoHundredAndTwelveFahrenheit);
+    }
+
+    @Test
+    void equals_shouldReturnTrue_when273Point15KelvinEquals32Fahrenheit() {
+        Measurement twoHundredSeventyThreePointOneFiveKelvin = new Measurement(273.15, Unit.KELVIN);
+        Measurement thirtyTwoFahrenheit = new Measurement(32, Unit.FAHRENHEIT);
+
+        Assertions.assertEquals(twoHundredSeventyThreePointOneFiveKelvin, thirtyTwoFahrenheit);
     }
 }

@@ -9,7 +9,7 @@ class UnitTest {
         double expectedConvertedValue = 1;
         Measurement oneHundredCentiMeters = new Measurement(100, Unit.CENTIMETER);
 
-        double actualConvertedValue = Unit.CENTIMETER.toStandardInternationalValue(oneHundredCentiMeters);
+        double actualConvertedValue = Unit.METER.toStandardInternationalValue(oneHundredCentiMeters);
 
         Assertions.assertEquals(expectedConvertedValue, actualConvertedValue);
     }

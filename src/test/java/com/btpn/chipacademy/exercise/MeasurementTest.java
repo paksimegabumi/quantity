@@ -3,6 +3,9 @@ package com.btpn.chipacademy.exercise;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.Warning;
+
 class MeasurementTest {
     @Test
     void equals_shouldReturnTrue_when100CelsiusEquals212Fahrenheit() {
@@ -18,5 +21,13 @@ class MeasurementTest {
         Measurement thirtyTwoFahrenheit = new Measurement(32, Metric.FAHRENHEIT);
 
         Assertions.assertEquals(twoHundredSeventyThreePointOneFiveKelvin, thirtyTwoFahrenheit);
+    }
+
+    @Test
+    void equalsContract() {
+        EqualsVerifier
+        .forClass(Measurement.class)
+        .suppress(Warning.NULL_FIELDS, Warning.STRICT_HASHCODE, Warning.ALL_FIELDS_SHOULD_BE_USED)
+        .verify();
     }
 }

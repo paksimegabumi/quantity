@@ -62,5 +62,4 @@ class ArithmeticMeasurementTest {
 
         Assertions.assertEquals(actualResult, expectedResult);
     }
-
 }

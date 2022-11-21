@@ -28,7 +28,7 @@ public enum Metric {
         return this.metricType.getInternationalStandardUnit().convertValueOf(measurement);
     }
 
-    private double convertValueOf(Measurement measurement) {
+    public double convertValueOf(Measurement measurement) {
         if (!this.isSameMetricType(measurement.metric)) {
             throw new DifferentMetricTypeException();
         }

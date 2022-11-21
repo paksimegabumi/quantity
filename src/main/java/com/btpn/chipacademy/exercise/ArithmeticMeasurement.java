@@ -26,7 +26,7 @@ public class ArithmeticMeasurement extends Measurement {
     }
 
     public ArithmeticMeasurement add(Measurement otherMeasurement) {
-        double convertedOtherMeasurementValue = this.metric.toStandardInternationalValue(otherMeasurement);
+        double convertedOtherMeasurementValue = this.metric.convertValueOf(otherMeasurement);
         double result = this.value + convertedOtherMeasurementValue;
         return new ArithmeticMeasurement(result, this.metric);
     }
